@@ -33,97 +33,100 @@ function App() {
 	}, []);
 
 	return (
-		<>
+		<div className="min-h-screen bg-gray-100 text-slate-900 font-sans">
 			<AuthProvider>
 				<BrowserRouter>
 					<NavBar />
-					<Routes>
-						{/* public/auth */}
-						<Route path="/" element={<Homepage />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/register" element={<Register />} />
 
-						{/* regular user */}
-						<Route
-							path="/dashboard"
-							element={
-								<ProtectedRoute>
-									<Dashboard />
-								</ProtectedRoute>
-							}
-						></Route>
-						<Route
-							path="/profile"
-							element={
-								<ProtectedRoute>
-									<Profile />
-								</ProtectedRoute>
-							}
-						/>
+					<main className="container mx-auto px-4 py-8 animate-fade-in">
+						<Routes>
+							{/* public/auth */}
+							<Route path="/" element={<Homepage />} />
+							<Route path="/login" element={<Login />} />
+							<Route path="/register" element={<Register />} />
 
-						{/* admin area */}
-						<Route
-							path="/admin"
-							element={
-								<AdminRoute>
-									<AdminDashboard />
-								</AdminRoute>
-							}
-						/>
-						<Route
-							path="/admin/users"
-							element={
-								<AdminRoute>
-									<AdminUsers />
-								</AdminRoute>
-							}
-						/>
-						<Route
-							path="/admin/announcements"
-							element={
-								<AdminRoute>
-									<AdminAnnouncements />
-								</AdminRoute>
-							}
-						/>
+							{/* regular user */}
+							<Route
+								path="/dashboard"
+								element={
+									<ProtectedRoute>
+										<Dashboard />
+									</ProtectedRoute>
+								}
+							></Route>
+							<Route
+								path="/profile"
+								element={
+									<ProtectedRoute>
+										<Profile />
+									</ProtectedRoute>
+								}
+							/>
 
-						<Route
-							path="/blogs"
-							element={
-								<ProtectedRoute>
-									<BlogList />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/blog/new"
-							element={
-								<ProtectedRoute>
-									<BlogForm />
-								</ProtectedRoute>
-							}
-						/>
+							{/* admin area */}
+							<Route
+								path="/admin"
+								element={
+									<AdminRoute>
+										<AdminDashboard />
+									</AdminRoute>
+								}
+							/>
+							<Route
+								path="/admin/users"
+								element={
+									<AdminRoute>
+										<AdminUsers />
+									</AdminRoute>
+								}
+							/>
+							<Route
+								path="/admin/announcements"
+								element={
+									<AdminRoute>
+										<AdminAnnouncements />
+									</AdminRoute>
+								}
+							/>
 
-						<Route
-							path="/blog/edit/:id"
-							element={
-								<ProtectedRoute>
-									<BlogForm />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/blogs/:id"
-							element={
-								<ProtectedRoute>
-									<BlogDetail />
-								</ProtectedRoute>
-							}
-						/>
-					</Routes>
+							<Route
+								path="/blogs"
+								element={
+									<ProtectedRoute>
+										<BlogList />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path="/blog/new"
+								element={
+									<ProtectedRoute>
+										<BlogForm />
+									</ProtectedRoute>
+								}
+							/>
+
+							<Route
+								path="/blog/edit/:id"
+								element={
+									<ProtectedRoute>
+										<BlogForm />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path="/blogs/:id"
+								element={
+									<ProtectedRoute>
+										<BlogDetail />
+									</ProtectedRoute>
+								}
+							/>
+						</Routes>
+					</main>
 				</BrowserRouter>
 			</AuthProvider>
-		</>
+		</div>
 	);
 }
 

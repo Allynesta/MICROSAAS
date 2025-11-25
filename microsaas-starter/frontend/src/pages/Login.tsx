@@ -16,7 +16,7 @@ const Login = () => {
 			const data = await loginUser(email, password);
 			login(data.user, data.token);
 			alert("Login successful!");
-			navigate("/dashboard");
+			navigate("/");
 		} catch (error: unknown) {
 			if (typeof error === "object" && error !== null && "response" in error) {
 				const err = error as { response?: { data?: { message?: string } } };

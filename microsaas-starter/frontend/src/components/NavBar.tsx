@@ -44,7 +44,7 @@ export default function NavBar() {
 	// --- If user not logged in ---
 	if (!user)
 		return (
-			<nav className="sticky top-0 z-40 bg-white/70 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+			<nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-16">
 						{/* Nav links */}
@@ -53,10 +53,10 @@ export default function NavBar() {
 								<button
 									key={link.name}
 									onClick={() => navigate(link.path)}
-									className={`flex items-center space-x-1.5 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+									className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition duration-300 ease-in-out ${
 										location.pathname.startsWith(link.path)
-											? "bg-blue-50 text-blue-600 shadow-sm"
-											: "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+											? "bg-blue-100 text-blue-700 shadow-lg"
+											: "text-gray-700 hover:text-blue-700 hover:bg-gray-100"
 									}`}
 								>
 									{link.icon}
@@ -84,31 +84,33 @@ export default function NavBar() {
 							<button
 								key={link.name}
 								onClick={() => navigate(link.path)}
-								className={`flex items-center space-x-1.5 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+								className={`flex items-center space-x-1.5 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
 									location.pathname.startsWith(link.path)
-										? "bg-blue-50 text-blue-600 shadow-sm"
-										: "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+										? "bg-blue-100 text-blue-700 shadow-lg"
+										: "text-gray-700 hover:text-blue-700 hover:bg-gray-100"
 								}`}
 							>
 								{link.icon}
 								<span>{link.name}</span>
 							</button>
 						))}
-						<button
-							onClick={handleLogout}
-							className="flex items-center space-x-2 bg-blue-600 text-white text-sm font-medium py-2 px-3 sm:px-4 rounded-md hover:bg-blue-700 shadow-sm transition-all duration-200"
-						>
-							<LogOut size={16} />
-							<span>Logout</span>
-						</button>
 					</div>
 
 					<div className="flex items-center space-x-2 sm:space-x-4">
 						<span className="text-sm sm:text-base text-gray-700">
-							{greeting} 👋{" "}
-							<span className="text-blue-600 font-semibold">
-								{user.username}
+							<span className="text-sm sm:text-base text-gray-700">
+								{greeting} 👋{" "}
+								<span className="text-blue-600 font-semibold">
+									{user.username}
+								</span>
 							</span>
+							<button
+								onClick={handleLogout}
+								className="flex items-center space-x-2 bg-blue-600 text-white text-sm font-medium py-2 px-3 sm:px-4 rounded-md hover:bg-blue-700 shadow-sm transition-all duration-200"
+							>
+								<LogOut size={16} />
+								<span>Logout</span>
+							</button>
 						</span>
 					</div>
 				</div>
